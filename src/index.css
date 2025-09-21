@@ -205,10 +205,10 @@
     animation-delay: 0.4s;
   }
 
-  /* Loading Screen Styles */
+  /* Loading Screen Styles - Dark Theme */
   .loading-container {
     @apply fixed inset-0 flex items-center justify-center;
-    background: var(--gradient-wellness);
+    background: hsl(var(--background));
     z-index: 9999;
   }
 
