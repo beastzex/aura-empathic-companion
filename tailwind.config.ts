@@ -84,6 +84,10 @@ export default {
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "breathe": "breathe 4s ease-in-out infinite",
+        "typing": "typing 1.4s infinite ease-in-out",
+        "fade-in": "fadeIn 0.3s ease-out",
+        "pulse-glow": "pulse-glow 2s ease-in-out infinite",
       },
     },
   },
