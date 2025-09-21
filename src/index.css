@@ -136,12 +136,11 @@
 }
 
 @layer components {
-  /* Glass Card Effects */
+  /* Glass Card Effects - No Glow */
   .glass-card {
     @apply backdrop-blur-xl bg-gradient-to-br border rounded-2xl;
     background: var(--gradient-glass);
     border-color: hsl(var(--glass-border));
-    box-shadow: var(--glow-primary);
   }
   
   /* Chat Bubble Styles */
@@ -149,7 +148,6 @@
     @apply rounded-2xl px-4 py-3 max-w-xs ml-auto;
     background: var(--gradient-neon);
     color: hsl(var(--primary-foreground));
-    box-shadow: var(--glow-neon);
   }
   
   .chat-bubble-ai {
@@ -157,25 +155,22 @@
     border: 1px solid hsl(var(--neon-blue) / 0.3);
   }
   
-  /* Wellness Button Styles */
+  /* Wellness Button Styles - No Glow */
   .wellness-button {
     @apply rounded-full px-6 py-3 font-medium transition-all duration-300;
     background: var(--gradient-wellness);
     color: hsl(var(--primary-foreground));
-    box-shadow: var(--glow-primary);
     transition: var(--transition-bounce);
   }
   
   .wellness-button:hover {
     transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 10px 40px hsl(var(--wellness-primary) / 0.4);
   }
   
-  /* Floating Action Button */
+  /* Floating Action Button - No Glow */
   .fab {
     @apply fixed bottom-6 right-6 w-14 h-14 rounded-full flex items-center justify-center;
     background: var(--gradient-neon);
-    box-shadow: var(--glow-neon);
     transition: var(--transition-bounce);
   }
   
@@ -208,6 +203,76 @@
   
   .typing-dot:nth-child(3) {
     animation-delay: 0.4s;
+  }
+
+  /* Loading Screen Styles */
+  .loading-container {
+    @apply fixed inset-0 flex items-center justify-center;
+    background: var(--gradient-wellness);
+    z-index: 9999;
+  }
+
+  .aura-logo {
+    @apply w-16 h-16 rounded-full flex items-center justify-center mb-6;
+    background: var(--gradient-neon);
+    animation: logoFloat 3s ease-in-out infinite;
+  }
+
+  .aura-logo-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .loading-bar-container {
+    @apply w-80 h-2 rounded-full overflow-hidden;
+    background: hsl(var(--glass-bg));
+    border: 1px solid hsl(var(--glass-border));
+  }
+
+  .loading-bar {
+    @apply h-full rounded-full;
+    background: var(--gradient-neon);
+    animation: loadingProgress 3s ease-out forwards;
+    transform-origin: left center;
+  }
+
+  .loading-particles {
+    @apply absolute inset-0 pointer-events-none;
+  }
+
+  .particle {
+    @apply absolute w-1 h-1 rounded-full;
+    background: hsl(var(--neon-blue));
+    animation: particleFloat 4s ease-in-out infinite;
+  }
+
+  .particle:nth-child(1) {
+    top: 20%;
+    left: 10%;
+    animation-delay: 0s;
+  }
+
+  .particle:nth-child(2) {
+    top: 60%;
+    left: 80%;
+    animation-delay: 1s;
+  }
+
+  .particle:nth-child(3) {
+    top: 30%;
+    left: 70%;
+    animation-delay: 2s;
+  }
+
+  .particle:nth-child(4) {
+    top: 80%;
+    left: 20%;
+    animation-delay: 0.5s;
+  }
+
+  .particle:nth-child(5) {
+    top: 40%;
+    left: 50%;
+    animation-delay: 1.5s;
   }
 }
 
@@ -259,4 +324,39 @@
 
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-10px) rotate(180deg);
+  }
+}
+
+@keyframes loadingProgress {
+  0% {
+    width: 0%;
+    opacity: 0.6;
+  }
+  100% {
+    width: 100%;
+    opacity: 1;
+  }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0) scale(0.8);
+    opacity: 0.4;
+  }
+  33% {
+    transform: translateY(-20px) scale(1);
+    opacity: 0.8;
+  }
+  66% {
+    transform: translateY(-10px) scale(1.2);
+    opacity: 1;
+  }
 }

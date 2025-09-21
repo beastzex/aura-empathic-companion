@@ -3,8 +3,10 @@ import { ChatInterface } from '@/components/ChatInterface';
 import { BreathingExercise } from '@/components/BreathingExercise';
 import { AffirmationModal } from '@/components/AffirmationModal';
 import { EmotionDetection } from '@/components/EmotionDetection';
+import { LoadingScreen } from '@/components/LoadingScreen';
 
 const Index = () => {
+  const [isLoading, setIsLoading] = useState(true);
   const [showBreathing, setShowBreathing] = useState(false);
   const [showAffirmation, setShowAffirmation] = useState(false);
   const [currentEmotion, setCurrentEmotion] = useState<string>('neutral');
@@ -13,6 +15,14 @@ const Index = () => {
     setCurrentEmotion(emotion);
     console.log('Emotion detected:', emotion);
   };
+
+  const handleLoadingComplete = () => {
+    setIsLoading(false);
+  };
+
+  if (isLoading) {
+    return <LoadingScreen onComplete={handleLoadingComplete} />;
+  }
 
   return (
     <div className="min-h-screen bg-background">
